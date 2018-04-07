@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 def next_coordinate(x, y, old_x, old_y, size)
   @map[x][y] = 1
-  #
-  # @map.each do |row|
-  #   puts row.join(' ')
-  # end
+
+  File.open('results.txt', 'w') do |f|
+    @map.each do |row|
+      f << row.join(' ') << "\n"
+    end
+  end
 
   if x == old_x
     # We hit the desired row, so either retry or extend the line
@@ -24,8 +26,8 @@ def decide_next_point(counter=0)
   # TODO optimize because this re-checks 0..n-1
   (0..counter).each do |x_counter|
     (0..counter).each do |y_counter|
-      if @map[499 + x_counter][499 + y_counter] == 0
-        return [499 + x_counter + 1, 499 + y_counter + 1]
+      if @map[@old_x + x_counter][@old_y + y_counter] == 0
+        return [@old_x + x_counter + 1, @old_y + y_counter + 1]
       end
     end
   end
@@ -37,12 +39,14 @@ num_tests = gets.chomp.to_i
 
 num_tests.times do |test|
   size = gets.chomp.to_i
-  # @map = Array.new(10) { Array.new(10, 0) }
-  # old_x = 4
-  # old_y = 4
-  @map = Array.new(1000) { Array.new(1000, 0) }
-  old_x = 499
-  old_y = 499
+  @map = Array.new(50) { Array.new(50, 0) }
+  old_x = 20
+  old_y = 20
+  # @map = Array.new(1000) { Array.new(1000, 0) }
+  # old_x = 499
+  # old_y = 499
+  @old_x = old_x
+  @old_y = old_y
   result = []
   puts "#{old_x + 1} #{old_y + 1}"
   while true do
