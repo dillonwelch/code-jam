@@ -28,19 +28,19 @@ def next_coordinate(x, y, old_x, old_y, size)
 end
 
 num_tests = gets.chomp.to_i
+# puts num_tests
 
 num_tests.times do |test|
-  # puts "test #{test}"
   size = gets.chomp.to_i
-  @map = Array.new(10) { Array.new(10, 0) }
-  old_x = 4
-  old_y = 4
-  # old_x = 499
-  # old_y = 499
+  @map = Array.new(1000) { Array.new(1000, 0) }
+  # old_x = 4
+  # old_y = 4
+  old_x = 499
+  old_y = 499
   result = []
   puts "#{old_x + 1} #{old_y + 1}"
-  # puts "500 500"
   while true do
+    STDOUT.flush
     line = gets.chomp.split
     x = line[0].to_i
     y = line[1].to_i
