@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 def next_coordinate(x, y, size)
   @map[x][y] = 1
+  [x,y]
 end
 
 num_tests = gets.chomp.to_i
