@@ -26,11 +26,12 @@ def validate_result(list, case_number)
 end
 
 num_tests = gets.chomp.to_i
+total_arr = []
 num_tests.times do |test|
   len = gets.chomp
   raw_arr = gets.chomp
-  arr = raw_arr.split(' ')
-  puts validate_result(trouble_sort(arr), test)
+  total_arr << raw_arr.split(' ')
 end
-# puts validate_result(trouble_sort([5,6,8,4,3]), 1)
-# puts validate_result(trouble_sort([8,9,7]), 2)
+num_tests.times do |test|
+  puts validate_result(trouble_sort(total_arr[test-1]), test)
+end
