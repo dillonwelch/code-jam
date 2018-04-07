@@ -50,19 +50,30 @@ def number_of_hacks(commands, shield, case_number)
     else
       case result
       when 0
-        puts "Case ##{case_number}: #{counter}"
-        return
+        return "Case ##{case_number}: #{counter}"
       when false
-        puts "Case ##{case_number}: IMPOSSIBLE"
-        return
+        return "Case ##{case_number}: IMPOSSIBLE"
       end
     end
   end
 end
 
-number_of_hacks('CS'.split(''), 1, 1)
-number_of_hacks('CS'.split(''), 2, 2)
-number_of_hacks('SS'.split(''), 1, 3)
-number_of_hacks('SCCSSC'.split(''), 6, 4)
-number_of_hacks('CC'.split(''), 2, 5)
-number_of_hacks('CSCSS'.split(''), 3, 6)
+num_inputs = gets.chomp.to_i
+results = []
+
+num_inputs.times do |counter|
+  row = gets.chomp
+  shield, commands = row.split
+  results << number_of_hacks(commands.split(''), shield.to_i, counter + 1)
+end
+
+results.each do |result|
+  puts result
+end
+
+# number_of_hacks('CS'.split(''), 1, 1)
+# number_of_hacks('CS'.split(''), 2, 2)
+# number_of_hacks('SS'.split(''), 1, 3)
+# number_of_hacks('SCCSSC'.split(''), 6, 4)
+# number_of_hacks('CC'.split(''), 2, 5)
+# number_of_hacks('CSCSS'.split(''), 3, 6)
