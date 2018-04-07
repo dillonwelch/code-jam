@@ -16,4 +16,15 @@ def evaluate(commands)
   total_damage
 end
 
-puts evaluate 'SCCSSC'
+def hack(commands, shield)
+  total_damage = evaluate(commands)
+  if total_damage > shield
+    # TODO hack
+  else
+    return true
+  end
+end
+
+
+
+puts "Case #1: #{hack('CS', 2)}"
