@@ -41,7 +41,7 @@ Windows users:
 # testing. Note that A[0] is the A given for the first test case, A[1] is for
 # the second test case, etc. In real judging, A is the same for all test cases
 # within the same test set.
-LIST_OF_A = [2, 2, 2]
+LIST_OF_A = [200, 200, 200]
 NUM_TEST_CASES = len(LIST_OF_A)
 # You can set PRINT_INTERACTION_HISTORY to True to print out the interaction
 # history between your code and the judge.
@@ -54,7 +54,7 @@ def JudgePrint(p, s):
   # to console (stdout) if PRINT_INTERACTION_HISTORY is True.
   print(s, file=p.stdin)
   p.stdin.flush()
-  print("Judge prints:", s)
+  # print("Judge prints:", s)
 
 
 def PrintSubprocessResults(p):
