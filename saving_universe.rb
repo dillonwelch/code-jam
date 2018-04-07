@@ -18,6 +18,10 @@ end
 def hack(commands, shield)
   total_damage = evaluate(commands)
   if total_damage > shield
+    unless commands.any? { |i| i == 'C' }
+      return false
+    end
+
     if commands.length == 2
       result = [commands[1], commands[0]]
       if evaluate(result) > shield
@@ -26,14 +30,14 @@ def hack(commands, shield)
         return result
       end
     else
-      commands[0..commands.length-1].each_with_index do |command, i|
+      commands[0..commands.length-2].each_with_index do |command, i|
         next if command == 'S'
         next if commands[i+1] == 'C' && i+2 != commands.length
         commands[i] = commands[i+1]
         commands[i+1] = command
         return commands
       end
-      return commands
+      return false
     end
   else
     return 0
@@ -71,9 +75,9 @@ results.each do |result|
   puts result
 end
 
-# number_of_hacks('CS'.split(''), 1, 1)
-# number_of_hacks('CS'.split(''), 2, 2)
-# number_of_hacks('SS'.split(''), 1, 3)
-# number_of_hacks('SCCSSC'.split(''), 6, 4)
-# number_of_hacks('CC'.split(''), 2, 5)
-# number_of_hacks('CSCSS'.split(''), 3, 6)
+# puts number_of_hacks('SSC'.split(''), 1, 1)
+# puts number_of_hacks('CS'.split(''), 2, 2)
+# puts number_of_hacks('SS'.split(''), 1, 3)
+# puts number_of_hacks('SCCSSC'.split(''), 6, 4)
+# puts number_of_hacks('CC'.split(''), 2, 5)
+# puts number_of_hacks('CSCSS'.split(''), 3, 6)
