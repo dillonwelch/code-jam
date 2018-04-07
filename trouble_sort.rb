@@ -30,8 +30,8 @@ total_arr = []
 num_tests.times do |test|
   len = gets.chomp
   raw_arr = gets.chomp
-  total_arr << raw_arr.split(' ')
+  total_arr << raw_arr.split(' ').map(&:to_i)
 end
 num_tests.times do |test|
-  validate_result(trouble_sort(total_arr[test-1]), test)
+  validate_result(trouble_sort(total_arr[test]), test + 1)
 end
