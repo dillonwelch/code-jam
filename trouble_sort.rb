@@ -33,5 +33,5 @@ num_tests.times do |test|
   total_arr << raw_arr.split(' ')
 end
 num_tests.times do |test|
-  puts validate_result(trouble_sort(total_arr[test-1]), test)
+  validate_result(trouble_sort(total_arr[test-1]), test)
 end
