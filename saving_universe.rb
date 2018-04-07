@@ -25,6 +25,15 @@ def hack(commands, shield)
       else
         return result
       end
+    else
+      commands[0..commands.length-1].each_with_index do |command, i|
+        next if command == 'S'
+        next if commands[i+1] == 'C' && i+2 != commands.length
+        commands[i] = commands[i+1]
+        commands[i+1] = command
+        return commands
+      end
+      return commands
     end
   else
     return 0
@@ -53,3 +62,7 @@ end
 
 number_of_hacks('CS'.split(''), 1, 1)
 number_of_hacks('CS'.split(''), 2, 2)
+number_of_hacks('SS'.split(''), 1, 3)
+number_of_hacks('SCCSSC'.split(''), 6, 4)
+number_of_hacks('CC'.split(''), 2, 5)
+number_of_hacks('CSCSS'.split(''), 3, 6)
