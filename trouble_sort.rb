@@ -15,4 +15,15 @@ def trouble_sort(list)
   list
 end
 
-puts trouble_sort([5,6,6,4,3])
+def validate_result(list, case_number)
+  list[0..list.length-2].each_with_index do |val, i|
+    if val > list[i+1]
+      puts "Case ##{case_number}: #{i}"
+      return
+    end
+  end
+  puts "Case ##{case_number}: OK"
+end
+
+puts validate_result(trouble_sort([5,6,8,4,3]), 1)
+puts validate_result(trouble_sort([8,9,7]), 2)
