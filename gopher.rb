@@ -7,9 +7,16 @@ def next_coordinate(x, y, old_x, old_y, size)
       f << row.join(' ') << "\n"
     end
   end
+  # @map.each do |row|
+  #   puts row.join(' ')
+  # end
 
   if rectangle_around_point?(old_x, old_y)
-    [old_x + 2, old_y + 1]
+    if old_x == (@old_x + 5)
+      [@old_x + 1, old_y + 3]
+    else
+      [old_x + 2, old_y + 1]
+    end
   else
     # Have not made a complete rectangle around the point
     [old_x + 1, old_y + 1]
@@ -58,8 +65,8 @@ num_tests = gets.chomp.to_i
 
 num_tests.times do |test|
   size = gets.chomp.to_i
-  # @map = Array.new(50) { Array.new(50, 0) }
-  @map = Array.new(200) { Array.new(200, 0) }
+  @map = Array.new(50) { Array.new(50, 0) }
+  # @map = Array.new(200) { Array.new(200, 0) }
   old_x = 20
   old_y = 20
   # @map = Array.new(1000) { Array.new(1000, 0) }
